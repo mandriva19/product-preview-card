@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@700&display=swap");
+
+:root {
+  --primary-dark-cyan: hsl(158, 36%, 37%);
+  --primary-dark-cyan-darker: hsl(157, 32%, 27%);
+  --primary-cream: hsl(30, 38%, 92%);
+  --primary-dark-blue: hsl(212, 21%, 14%);
+  --primary-dark-gray-blue: hsl(228, 12%, 48%);
+  --white: hsl(0, 0%, 100%);
+
+  --font-family-monsterrat: "Montserrat", sans-serif;
+  --font-family-fraunces: "Fraunces", serif;
+  --fw-base: 500;
+  --fw-thin: 200;
+  --fw-skin: 300;
+  --fw-bold: 700;
+}
+
+/* globals & reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-fraunces);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-cream);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+small,
+p,
+a {
+  font-family: var(--font-family-monsterrat);
+}
+
+/* hide desktop img by default */
+
+.img-desktop {
+  display: none;
+}
+
+/* show/hide destkop/mobile img */
+
+@media (min-width: 800px) {
+  .img-desktop {
+    display: block;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .img-mobile {
+    display: none;
+  }
+}
+
+/* card styles */
+
+.card {
+  max-width: 21.5625rem;
+  border-radius: 8px;
+  background-color: var(--white);
+}
+
+/* card img on the left */
+
+.card .img-mobile {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+/* card body on the right */
+
+.card-body {
+  display: grid;
+  gap: 0.75rem;
+  padding-inline: 1.5625rem;
+  padding-top: 1.3625rem;
+  padding-bottom: 1.5rem;
+}
+
+/* card body top text */
+
+.card-body small {
+  letter-spacing: 6px;
+  color: var(--primary-dark-gray-blue);
+}
+
+/* card body title */
+
+.card-body h1 {
+  color: var(--primary-dark-blue);
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: var(--fw-base);
+}
+
+/* card body summary */
+
+.card-body p {
+  color: var(--primary-dark-gray-blue);
+  font-size: 0.875rem;
+  font-weight: var(--fw-base);
+  line-height: 1.6;
+}
+
+/* card price container */
+
+.card-price {
+  display: flex;
+  align-items: center;
+  gap: 0.9375rem;
+}
+
+/* card price actuall price */
+
+.card-price p {
+  color: var(--primary-dark-cyan);
+  font-family: var(--font-family-fraunces);
+  font-size: 1.875rem;
+}
+
+/* card price previous price */
+
+.card-price span {
+  color: var(--primary-dark-gray-blue);
+  font-family: var(--font-family-monsterrat);
+  font-weight: var(--fw-base);
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
+/* card button */
+
+.card-btn {
+  text-decoration: none;
+  display: block;
+  background-color: var(--primary-dark-cyan);
+  color: var(--white);
+  text-align: center;
+  cursor: pointer;
+  padding-block: 0.8375rem;
+  border-radius: 7px;
+  font-size: 16px;
+  transition: ease-in all 100ms;
+}
+
+.card-btn:hover,
+.card-btn:focus-visible {
+  background-color: var(--primary-dark-cyan-darker);
+}
+
+/* setting card two 2 col layout on 800px breakpoint */
+@media (min-width: 50rem) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 650px;
+  }
+
+  .card-body {
+    padding-inline: 1.5625rem;
+    margin-right: 10px;
+    margin-left: 5px;
+    margin-top: 15px;
+    margin-bottom: 13px;
+  }
+
+  /* little hack because apparently setting display grid to a parent container messed up btns default inline-block property which messed up paddings adnd $hit */
+  .card-btn {
+    padding: 0;
+    margin: 0;
+    place-items: center;
+    padding-top: 12px;
+  }
+}
